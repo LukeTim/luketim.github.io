@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <title>Compounding Game</title>
+
+        <script   src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
+        <style type="text/css">
+            #two, #three, #four, #five, #six {
+                display: none;
+            }
+        </style>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Compounding</h1>
+        <div id="game">
+            <div id="beginning">
+                <p>Imagine I am your employer, and I have an offer for you. I will give you an amount which you must wait 30 years to touch.</p>
+            
+                <p>I can start your pot with £0.01, and it will double every year. Or, I can start your pot with £1,000, and I will add a further £1,000 each year.</p>
+            
+                <p>Which one do you pick?</p>
+
+                <div class="options"><button onclick="SetChoice(1);">Take £0.01</button><button onclick="SetChoice(2);">Give me £1,000!</button></div>
+            </div>
+            <div id="two">
+                <p>It is now year two.</p>
+                <p class="one">You chose to take the penny. You have £0.02 now. If you had taken the £1,000 you would now have £2,000.</p>
+                <p class="two">You chose to take the £1,000. You have £2,000. If you had taken the penny you would now have £0.02.</p>
+                <p>Remember, there are still 29 years left for your pot to grow.</p>
+                <p>It's not too late to change your mind! I have set up both pots in case you want to. Do you want to switch?</p>
+                <div class="options"><button onclick="SwitchChoice(2);">Yes I think I made a mistake</button><button onclick="NextStep(2);">No!</button></div>
+            </div>
+            <div id="three">
+                <p>It is now year five.</p>
+                <p class="one">You chose to take the penny. You have £0.16 now. If you had taken the £1,000 you would now have £5,000.</p>
+                <p class="two">You chose to take the £1,000. You have £5,000. If you had taken the penny you would now have £0.16.</p>
+                <p>Remember, there are still 25 years left for your pot to grow.</p>
+                <p>Do you want to switch now?</p>
+                <div class="options"><button onclick="SwitchChoice(3);">Yes I think I made a mistake</button>><button onclick="NextStep(3);">No, I'm confident.</button></div>
+            </div>
+            <div id="four">
+                <p>It is now year ten.</p>
+                <p class="one">You chose to take the penny. You have £5.12 now. If you had taken the £1,000 you would now have £1,0000.</p>
+                <p class="two">You chose to take the £1,000. You have £1,0000. If you had taken the penny you would now have £5.12.</p>
+                <p>Remember, there are still 20 years left for your pot to grow.</p>
+                <p>Do you want to switch now?</p>
+                <div class="options"><button onclick="SwitchChoice(4);">Yes I think I made a mistake</button><button onclick="NextStep(4);">No, I'm confident.</button></div>
+            </div>
+            <div id="five">
+                <p>It is now year twenty.</p>
+                <p class="one">You chose to take the penny. You have £5,242.88 now. If you had taken the £1,000 you would now have £20,000.</p>
+                <p class="two">You chose to take the £1,000. You have £20,000. If you had taken the penny you would now have £5,242.88.</p>
+                <p>Remember, there are still 10 years left for your pot to grow.</p>
+                <p>Do you want to switch now?</p>
+                <div class="options"><button onclick="SwitchChoice(5);">Yes</button><button onclick="NextStep(5);">No</button></div>
+            </div>
+            <div id="six">
+                <p>It is now year thirty. You can finally access your pot!</p>
+                <p class="one_original">You chose to take the penny. Congratulations! Thanks to compounding growth doubling your money each year, you now have a whopping £5,368,709.12! If you had taken the £1,000 you would now have a comparatively paltry £30,000.</p>
+                <p class="two_original">You chose to take the £1,000. That's too bad, you did not gain from compounding growth and so you only have a pot of £30,000. If you had taken the penny you would now have a staggering £5,368,709.12!</p>
+                <p class="one_switch">You chose to switch to the penny. Congratulations! Thanks to compounding growth doubling your money each year, you now have a whopping £5,368,709.12! If you had taken the £1,000 you would now have a comparatively paltry £30,000.</p>
+                <p class="two_switch">You chose to switch to the £1,000. That's too bad, you did not gain from compounding growth and so you only have a pot of £30,000. If you had taken the penny you would now have a staggering £5,368,709.12!</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>From 1p</th>
+                            <th>From £1,000</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabled">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var choice = 0; //1 = 1p, 2 = £1,000,            var game_el = document.getElementById('game');
+            var switched = false;
+
+            var nums = ["one", "two", "three", "four", "five", "six"];
+
+            function SetChoice(c)
+            {
+                console.log("Choice Set");
+                choice = c;
+
+                var choice_str = nums[choice-1];
+                $("." + choice_str).show();
+
+                var not_choice = (choice % 2) + 1;
+                var not_choice_str = nums[not_choice-1];
+                $("." + not_choice_str).hide();
+
+                $("." + choice_str + "_original").show();
+                $("." + not_choice_str + "_original").hide();
+                $("." + choice_str + "_switch").hide();
+                $("." + not_choice_str + "_switch").hide();
+
+                StepTwo();
+            }
+
+            function SwitchChoice(s)
+            {
+                choice = (choice % 2) + 1;
+                switched = true;
+
+                var choice_str = nums[choice-1];
+                $("." + choice_str).show();
+
+                var not_choice = (choice % 2) + 1;
+                var not_choice_str = nums[not_choice-1];
+                $("." + not_choice_str).hide();
+
+                $("." + choice_str + "_original").hide();
+                $("." + not_choice_str + "_original").hide();
+                $("." + choice_str + "_switch").show();
+                $("." + not_choice_str + "_switch").hide();
+
+                NextStep(s);
+            }
+
+            function StepTwo()
+            {
+                $("#beginning").fadeOut(200, () => {
+                    $("#two").fadeIn(200);
+                });
+            }
+
+            function NextStep(s)
+            {
+                var new_div = "#" + nums[s];
+                
+                $("#" + nums[s-1]).fadeOut(200, () => {
+                    $(new_div).fadeIn(200);
+                });
+
+            }
+
+            function numberWithCommas(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
+            $(() => {
+                var comp = 1;
+                var thou = 1000;
+                for(i = 0; i < 30; i++)
+                {
+                    $("#tabled").append("<tr><td>" + (i+1) + "</td><td>£" + numberWithCommas(comp/100.0) + "</td><td>£" + numberWithCommas(thou) + "</td></tr>");
+                    comp *= 2;
+                    thou += 1000;
+                }
+            });
+        </script>
+    </body>
+</html>
