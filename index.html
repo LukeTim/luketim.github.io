@@ -59,6 +59,7 @@
             </div>
             <div id="six">
                 <p>It is now year thirty. You can finally access your pot!</p>
+                <div id="count"></div>
                 <p class="one_original">You chose to take the penny. Congratulations! Thanks to compounding growth doubling your money each year, you now have a whopping £5,368,709.12! If you had taken the £1,000 you would now have a comparatively paltry £30,000.</p>
                 <p class="two_original">You chose to take the £1,000. That's too bad, you did not gain from compounding growth and so you only have a pot of £30,000. If you had taken the penny you would now have a staggering £5,368,709.12!</p>
                 <p class="one_switch">You chose to switch to the penny. Congratulations! Thanks to compounding growth doubling your money each year, you now have a whopping £5,368,709.12! If you had taken the £1,000 you would now have a comparatively paltry £30,000.</p>
@@ -79,6 +80,7 @@
             </div>
         </div>
 
+        <script type="text/javascript" src="countUp.min.js"></script>
         <script type="text/javascript">
             var choice = 0; //1 = 1p, 2 = £1,000,            var game_el = document.getElementById('game');
             var switched = false;
@@ -140,7 +142,18 @@
                     $("#transition").fadeIn(200, () => {
                         setTimeout(() => {
                             $("#transition").fadeOut(200, () => {
-                                $(new_div).fadeIn(200);
+                                
+                                $(new_div).fadeIn(200, () => {
+                                    if(new_div == "#six") {
+                                        var val = 5368709.12;
+                                        if(choice == 2)
+                                        {
+                                            val = 30000;
+                                        }
+                                        var countUp = new countUp('count', val);
+                                        countUp.start();
+                                    }
+                                });
                             });
                         }, 2000);
                     });
