@@ -1,4 +1,4 @@
-import { $ } from "jquery";
+import { $, jQuery } from "jquery";
 import { CountUp } from "countUp.js";
 
 
@@ -73,7 +73,7 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-$(() => {
+jQuery(document).ready(() => {
     var comp = 1;
     var thou = 1000;
     for(i = 0; i < 30; i++)
