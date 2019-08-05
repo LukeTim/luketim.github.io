@@ -4,7 +4,7 @@
 
         <script   src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
         <style type="text/css">
-            #two, #three, #four, #five, #six {
+            #transition, #two, #three, #four, #five, #six {
                 display: none;
             }
         </style>
@@ -13,6 +13,9 @@
     <body>
         <h1>Compounding</h1>
         <div id="game">
+            <div id="transition">
+                <img src="https://compliancexws-wpengine.netdna-ssl.com/wp-content/uploads/2017/06/Money-Stack.gif" />    
+            </div>
             <div id="beginning">
                 <p>Imagine I am your employer, and I have an offer for you. I will give you an amount which you must wait 30 years to touch.</p>
             
@@ -134,7 +137,13 @@
                 var new_div = "#" + nums[s];
                 
                 $("#" + nums[s-1]).fadeOut(200, () => {
-                    $(new_div).fadeIn(200);
+                    $("#transition").fadeIn(200, () => {
+                        setTimeout(2000, () => {
+                            $("#transition").fadeOut(200, () => {
+                                $(new_div).fadeIn(200);
+                            });
+                        });
+                    });
                 });
 
             }
