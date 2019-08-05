@@ -94,19 +94,9 @@
                 console.log("Choice Set");
                 choice = c;
 
-                var choice_str = nums[choice-1];
-                $("." + choice_str).show();
+                SetVisible();
 
-                var not_choice = (choice % 2) + 1;
-                var not_choice_str = nums[not_choice-1];
-                $("." + not_choice_str).hide();
-
-                $("." + choice_str + "_original").show();
-                $("." + not_choice_str + "_original").hide();
-                $("." + choice_str + "_switch").hide();
-                $("." + not_choice_str + "_switch").hide();
-
-                StepTwo();
+                NextStep(2);
             }
 
             function SwitchChoice(s)
@@ -114,6 +104,12 @@
                 choice = (choice % 2) + 1;
                 switched = true;
 
+                SetVisible();
+
+                NextStep(s);
+            }
+
+            function SetVisible() {
                 var choice_str = nums[choice-1];
                 $("." + choice_str).show();
 
@@ -125,15 +121,6 @@
                 $("." + not_choice_str + "_original").hide();
                 $("." + choice_str + "_switch").show();
                 $("." + not_choice_str + "_switch").hide();
-
-                NextStep(s);
-            }
-
-            function StepTwo()
-            {
-                $("#beginning").fadeOut(200, () => {
-                    $("#two").fadeIn(200);
-                });
             }
 
             function NextStep(s)
