@@ -82,7 +82,10 @@
 
         <script type="module" src="countUp.min.js"></script>
         <script type="module">
+            import {$, jQuery} from "https://code.jquery.com/jquery-3.4.1.min.js";
             import { CountUp } from "./countUp.min.js";
+
+
             var choice = 0; //1 = 1p, 2 = £1,000,            
             var game_el = document.getElementById('game');
             var switched = false;
