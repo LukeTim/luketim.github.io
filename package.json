@@ -1,0 +1,32 @@
+{
+  "name": "luketim.github.io",
+  "version": "1.0.0",
+  "description": "My github site",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukeTim/luketim.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LukeTim/luketim.github.io/issues"
+  },
+  "homepage": "https://github.com/LukeTim/luketim.github.io#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "countup.js": "^2.0.4",
+    "g": "^2.0.1",
+    "jquery": "^3.4.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6"
+  }
+}
