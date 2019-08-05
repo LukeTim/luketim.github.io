@@ -138,11 +138,11 @@
                 
                 $("#" + nums[s-1]).fadeOut(200, () => {
                     $("#transition").fadeIn(200, () => {
-                        setTimeout(2000, () => {
+                        setTimeout(() => {
                             $("#transition").fadeOut(200, () => {
                                 $(new_div).fadeIn(200);
                             });
-                        });
+                        }, 2000);
                     });
                 });
 
