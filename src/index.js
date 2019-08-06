@@ -76,7 +76,7 @@ function numberWithCommas(x) {
 jQuery(document).ready(() => {
     var comp = 1;
     var thou = 1000;
-    for(i = 0; i < 30; i++)
+    for(var i = 0; i < 30; i++)
     {
         $("#tabled").append("<tr><td>" + (i+1) + "</td><td>£" + numberWithCommas(comp/100.0) + "</td><td>£" + numberWithCommas(thou) + "</td></tr>");
         comp *= 2;
