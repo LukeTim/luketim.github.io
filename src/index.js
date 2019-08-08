@@ -1,10 +1,13 @@
 //import { $, jQuery } from "jquery";
 import { CountUp } from "countUp.js";
+import { Chart } from "chart.js";
 
 
 var choice = 0; //1 = 1p, 2 = £1,000,            
 var game_el = document.getElementById('game');
 var switched = false;
+var compounded = [];
+var thousands = [];
 
 var nums = ["one", "two", "three", "four", "five", "six"];
 
@@ -15,7 +18,7 @@ function SetChoice(c)
 
     SetVisible();
 
-    NextStep(2);
+    NextStep(1);
 }
 
 function SwitchChoice(s)
@@ -58,7 +61,11 @@ function NextStep(s)
                             {
                                 val = 30000;
                             }
-                            var countUp = new CountUp('count', val);
+                            var options = {
+                                decimalPlaces: 2,
+                                prefix: '£'
+                            }
+                            var countUp = new CountUp('count', val, options);
                             countUp.start();
                         }
                     });
@@ -73,13 +80,63 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-jQuery(document).ready(() => {
+$(document).ready(() => {
     var comp = 1;
     var thou = 1000;
+
+    var years = [];
+    var year = new Date().getFullYear();
+
     for(var i = 0; i < 30; i++)
     {
+        years[i] = year;
+        compounded[i] = comp/100.0;
+        thousands[i] = thou;
         $("#tabled").append("<tr><td>" + (i+1) + "</td><td>£" + numberWithCommas(comp/100.0) + "</td><td>£" + numberWithCommas(thou) + "</td></tr>");
         comp *= 2;
         thou += 1000;
+        year++;
     }
+
+    var chartCanvas = $("#chart");
+
+    var chart = new Chart(chartCanvas, {
+        type: 'line',
+        data: {
+            labels: years,
+            datasets: [{
+                label: 'Growth with Compounding',
+                data: compounded
+            },
+            {
+                label: 'Linear Growth',
+                data: thousands
+            }]
+        }
+    });
+
+    $('#penny').click(() => {
+        SetChoice(1);
+    });
+    $('#grand').click(() => {
+        SetChoice(2);
+    });
+    $('.switch').click((e) => {
+        var id = $(e.target).parent().parent().prop('id');
+        var num = nums.indexOf(id);
+
+        console.log($(e.target).prop("id") + " " + $(this).parent().prop("id") + " " + $(this).parent().parent().prop("id"));
+
+        console.log("ID: " + id + " Number: " + num);
+
+        SwitchChoice(num+1);
+    });
+    $('.next').click((e) => {
+        var id = $(e.target).parent().parent().prop('id');
+        var num = nums.indexOf(id);
+
+        console.log("ID: " + id + " Number: " + num);
+
+        NextStep(num+1);
+    });
 });

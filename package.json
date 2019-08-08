@@ -27,6 +27,7 @@
     "jquery": "^3.4.1"
   },
   "devDependencies": {
+    "chart.js": "^2.8.0",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6"
   }
