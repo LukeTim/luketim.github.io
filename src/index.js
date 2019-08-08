@@ -61,7 +61,7 @@ function NextStep(s)
                             var val = 5368709.12;
                             if(choice == 2)
                             {
-                                val = 30000;
+                                val = 300000;
                             }
                             var options = {
                                 decimalPlaces: 2,
