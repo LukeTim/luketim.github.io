@@ -1,6 +1,7 @@
 //import { $, jQuery } from "jquery";
 import { CountUp } from "countUp.js";
 import { Chart } from "chart.js";
+import 'bootstrap';
 
 
 var choice = 0; //1 = 1p, 2 = £1,000,            
@@ -56,6 +57,7 @@ function NextStep(s)
                     
                     $(new_div).fadeIn(200, () => {
                         if(new_div == "#six") {
+                            $("#data").fadeIn(200);
                             var val = 5368709.12;
                             if(choice == 2)
                             {
@@ -67,6 +69,7 @@ function NextStep(s)
                             }
                             var countUp = new CountUp('count', val, options);
                             countUp.start();
+
                         }
                     });
                 });
@@ -82,20 +85,18 @@ function numberWithCommas(x) {
 
 $(document).ready(() => {
     var comp = 1;
-    var thou = 1000;
+    var thou = 10000;
 
     var years = [];
-    var year = new Date().getFullYear();
 
     for(var i = 0; i < 30; i++)
     {
-        years[i] = year;
+        years[i] = (i+1);
         compounded[i] = comp/100.0;
         thousands[i] = thou;
         $("#tabled").append("<tr><td>" + (i+1) + "</td><td>£" + numberWithCommas(comp/100.0) + "</td><td>£" + numberWithCommas(thou) + "</td></tr>");
         comp *= 2;
-        thou += 1000;
-        year++;
+        thou += 10000;
     }
 
     var chartCanvas = $("#chart");
@@ -106,13 +107,33 @@ $(document).ready(() => {
             labels: years,
             datasets: [{
                 label: 'Growth with Compounding',
-                data: compounded
+                data: compounded,
+                backgroundColor: '#9cffa4aa' ,
+                borderColor: '#45FF54' 
             },
             {
                 label: 'Linear Growth',
-                data: thousands
+                data: thousands,
+                backgroundColor: '#ff968faa' ,
+                borderColor: '#FF4337' 
             }]
-        }
+        },
+        optiops: {
+            scales: {
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Value'
+                }
+              }],
+              xAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Years'
+                }
+              }]
+            }     
+          }
     });
 
     $('#penny').click(() => {

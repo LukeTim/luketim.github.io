@@ -6,21 +6,25 @@
             body {
                 text-align: center;
             }
-            #transition, #two, #three, #four, #five, #six {
+            #transition, #two, #three, #four, #five, #six, #data {
                 display: none;
             }
             #count {
                 font-size: 36pt;
             }
             #mainContainer {
-                width:1000px;
+                max-width:1000px;
                 margin: 0 auto;
             }
         </style>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
         <meta charset="UTF-8">
     </head>
     <body>
-        <div id="mainContainer">
+        <div id="mainContainer" class="container-fluid">
         <h1>Compounding</h1>
         <div id="game">
             <div id="transition">
@@ -29,65 +33,74 @@
             <div id="one">
                 <p>Imagine I am your employer, and I have an offer for you. I will give you an amount which you must wait 30 years to touch.</p>
             
-                <p>I can start your pot with £0.01, and it will double every year. Or, I can start your pot with £1,000, and I will add a further £1,000 each year.</p>
+                <p>I can start your pot with £0.01, and it will double every year. Or, I can start your pot with £10,000, and I will add a further £10,000 each year.</p>
             
                 <p>Which one do you pick?</p>
 
-                <div class="options"><button id="penny">Take £0.01</button><button id="grand">Give me £1,000!</button></div>
+                <div class="btn-group options"><button class="btn btn-primary" id="penny">Take £0.01</button><button class="btn btn-primary" id="grand">Give me £10,000!</button></div>
             </div>
             <div id="two">
                 <p>It is now year two.</p>
-                <p class="one">You chose to take the penny. You have £0.02 now. If you had taken the £1,000 you would now have £2,000.</p>
-                <p class="two">You chose to take the £1,000. You have £2,000. If you had taken the penny you would now have £0.02.</p>
+                <p class="one">You chose to take the penny. You have £0.02 now. If you had taken the £10,000 you would now have £20,000.</p>
+                <p class="two">You chose to take the £10,000. You have £20,000. If you had taken the penny you would now have £0.02.</p>
                 <p>Remember, there are still 29 years left for your pot to grow.</p>
                 <p>It's not too late to change your mind! I have set up both pots in case you want to. Do you want to switch?</p>
-                <div class="options"><button id="two_switch" class="switch">Yes I think I made a mistake</button> <button class="next">No!</button></div>
+                <div class="btn-group options"><button class="btn btn-primary switch" id="two_switch">Yes I think I made a mistake</button> <button class="btn btn-primary next">No!</button></div>
             </div>
             <div id="three">
                 <p>It is now year five.</p>
-                <p class="one">You chose to take the penny. You have £0.16 now. If you had taken the £1,000 you would now have £5,000.</p>
-                <p class="two">You chose to take the £1,000. You have £5,000. If you had taken the penny you would now have £0.16.</p>
+                <p class="one">You chose to take the penny. You have £0.16 now. If you had taken the £10,000 you would now have £50,000.</p>
+                <p class="two">You chose to take the £10,000. You have £50,000. If you had taken the penny you would now have £0.16.</p>
                 <p>Remember, there are still 25 years left for your pot to grow.</p>
                 <p>Do you want to switch now?</p>
-                <div class="options"><button class="switch">Yes I think I made a mistake</button> <button class="next">No, I'm confident.</button></div>
+                <div class="btn-group options"><button class="btn btn-primary switch">Yes I think I made a mistake</button> <button class="btn btn-primary next">No, I'm confident.</button></div>
             </div>
             <div id="four">
                 <p>It is now year ten.</p>
-                <p class="one">You chose to take the penny. You have £5.12 now. If you had taken the £1,000 you would now have £1,0000.</p>
-                <p class="two">You chose to take the £1,000. You have £10,000. If you had taken the penny you would now have £5.12.</p>
+                <p class="one">You chose to take the penny. You have £5.12 now. If you had taken the £10,000 you would now have £100,000.</p>
+                <p class="two">You chose to take the £10,000. You have £100,000. If you had taken the penny you would now have £5.12.</p>
                 <p>Remember, there are still 20 years left for your pot to grow.</p>
                 <p>Do you want to switch now?</p>
-                <div class="options"><button class="switch">Yes I think I made a mistake</button> <button class="next">No, I'm confident.</button></div>
+                <div class="btn-group options"><button class="btn btn-primary switch">Yes I think I made a mistake</button> <button class="btn btn-primary next" class="">No, I'm confident.</button></div>
             </div>
             <div id="five">
                 <p>It is now year twenty.</p>
-                <p class="one">You chose to take the penny. You have £5,242.88 now. If you had taken the £1,000 you would now have £20,000.</p>
-                <p class="two">You chose to take the £1,000. You have £20,000. If you had taken the penny you would now have £5,242.88.</p>
+                <p class="one">You chose to take the penny. You have £5,242.88 now. If you had taken the £10,000 you would now have £200,000.</p>
+                <p class="two">You chose to take the £10,000. You have £200,000. If you had taken the penny you would now have £5,242.88.</p>
                 <p>Remember, there are still 10 years left for your pot to grow.</p>
                 <p>Do you want to switch now?</p>
-                <div class="options"><button class="switch">Yes</button> <button class="next">No</button></div>
+                <div class="btn-group options"><button class="btn btn-primary switch" class="">Yes</button> <button class="btn btn-primary next">No</button></div>
             </div>
             <div id="six">
                 <p>It is now year thirty. You can finally access your pot!</p>
+                <h1 class="one_original one_switch">Congratulations!</h1>
+                <h1 class="two_original two_switch">Too bad!</h1>
                 <div id="count"></div>
-                <p class="one_original">You chose to take the penny. Congratulations! Thanks to compounding growth doubling your money each year, you now have a whopping £5,368,709.12! If you had taken the £1,000 you would now have a comparatively paltry £30,000.</p>
-                <p class="two_original">You chose to take the £1,000. That's too bad, you did not gain from compounding growth and so you only have a pot of £30,000. If you had taken the penny you would now have a staggering £5,368,709.12!</p>
-                <p class="one_switch">You chose to switch to the penny. Congratulations! Thanks to compounding growth doubling your money each year, you now have a whopping £5,368,709.12! If you had taken the £1,000 you would now have a comparatively paltry £30,000.</p>
-                <p class="two_switch">You chose to switch to the £1,000. That's too bad, you did not gain from compounding growth and so you only have a pot of £30,000. If you had taken the penny you would now have a staggering £5,368,709.12!</p>
+                <p class="one_original">You chose to take the penny. Congratulations! Thanks to compounding growth doubling your money each year, you now have a whopping £50,368,709.12! If you had taken the £10,000 you would now have a comparatively paltry £300,000.</p>
+                <p class="two_original">You chose to take the £10,000. That's too bad, you did not gain from compounding growth and so you only have a pot of £300,000. If you had taken the penny you would now have a staggering £50,368,709.12!</p>
+                <p class="one_switch">You chose to switch to the penny. Congratulations! Thanks to compounding growth doubling your money each year, you now have a whopping £50,368,709.12! If you had taken the £10,000 you would now have a comparatively paltry £300,000.</p>
+                <p class="two_switch">You chose to switch to the £10,000. That's too bad, you did not gain from compounding growth and so you only have a pot of £300,000. If you had taken the penny you would now have a staggering £50,368,709.12!</p>
+            </div>
+            
+            <div id="data" class="row well">
+                <h3>How money grows with compounding vs linear growth</h3>
+                <div class="col-md-4">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Compounded from 1p</th>
+                                <th>Linear growth from £10,000</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabled">
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Year</th>
-                            <th>From 1p</th>
-                            <th>From £1,000</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabled">
-
-                    </tbody>
-                </table>
-                <canvas id="chart"></canvas>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-8">
+                    <canvas id="chart"></canvas>
+                </div>
             </div>
         </div>
     </div>
