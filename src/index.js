@@ -133,7 +133,21 @@ $(document).ready(() => {
                 }
               }]
             }     
-          }
+        },
+        onResize: function(myChart, size) {
+
+            var showTicks = (size.height < 140) ? false : true;
+       
+            myChart.options = {
+                   scales: {
+                       xAxes: [{
+                           ticks: {
+                               display: showTicks
+                           }
+                       }]
+                   }
+            }
+        }
     });
 
     $('#penny').click(() => {

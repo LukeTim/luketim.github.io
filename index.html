@@ -28,8 +28,8 @@
         <div id="mainContainer">
         <h1>Compounding</h1>
         <div id="game" class="container-fluid">
-            <div id="transition" class="row">
-                <img class="img-fluid" src="./static/Money-Stack.gif" />    
+            <div id="transition">
+                <img class="img-responsive" src="./static/Money-Stack.gif" />
             </div>
             <div id="one">
                 <p>Imagine I am your employer, and I have an offer for you. I will give you an amount which you must wait 30 years to touch.</p>
@@ -78,13 +78,14 @@
                 <h1 class="two_original two_switch">Too bad!</h1>
                 <div id="count"></div>
                 <p class="one_original">You chose to take the penny. Congratulations! Thanks to compounding growth doubling your money each year, you now have a whopping £50,368,709.12! If you had taken the £10,000 you would now have a comparatively paltry £300,000.</p>
-                <p class="two_original">You chose to take the £10,000. That's too bad, you did not gain from compounding growth and so you only have a pot of £300,000. If you had taken the penny you would now have a staggering £50,368,709.12!</p>
+                <p class="two_original">You chose to take the £10,000. That's too bad, you did not gain from compounding growth and so you only have a pot of £300,000. If you had taken the penny you would now have a staggering £5,368,709.12!</p>
                 <p class="one_switch">You chose to switch to the penny. Congratulations! Thanks to compounding growth doubling your money each year, you now have a whopping £50,368,709.12! If you had taken the £10,000 you would now have a comparatively paltry £300,000.</p>
-                <p class="two_switch">You chose to switch to the £10,000. That's too bad, you did not gain from compounding growth and so you only have a pot of £300,000. If you had taken the penny you would now have a staggering £50,368,709.12!</p>
+                <p class="two_switch">You chose to switch to the £10,000. That's too bad, you did not gain from compounding growth and so you only have a pot of £300,000. If you had taken the penny you would now have a staggering £5,368,709.12!</p>
             </div>
             
             <div id="data" class="row well">
                 <h3>How money grows with compounding vs linear growth</h3>
+                <p>Compounded growth pays off hugely over the long term. You can see from the graph below comparing the two options that while the linear £10,000 extra per year will outpace the growth of the compounded doubling for most of the 30 year term, the pace of the compounded growth picks up only in the last few years and exceeds the linear growth very quickly and by a huge amount.</p>
                 <div class="col-md-4">
                     <table class="table table-condensed">
                         <thead>
@@ -100,7 +101,7 @@
                     </table>
                 </div>
                 <div class="col-md-8">
-                    <canvas id="chart"></canvas>
+                    <canvas id="chart" style="min-height: 50px;"></canvas>
                 </div>
             </div>
         </div>
