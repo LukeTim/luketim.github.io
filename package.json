@@ -31,6 +31,6 @@
     "chart.js": "^2.8.0",
     "popper.js": "^1.15.0",
     "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.12"
   }
 }
